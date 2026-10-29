@@ -1,3 +1,4 @@
+//app>(AdminPage)>page>Sldebar>Footer>page.tsx 
 "use client";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -5,13 +6,13 @@ import React, { useEffect, useState } from "react";
 function PageFooter() {
   const currentDate = new Date();
   const formattedDate = currentDate.toLocaleDateString("en-US", {
-    day: "numeric",
+    day: "numeric", 
     month: "long",
     year: "numeric",
   });
 
   const [isVisible, setIsVisible] = useState(false);
-
+ 
   // ✅ Show/hide back-to-top button when scrolling
   useEffect(() => {
     const toggleVisibility = () => {

@@ -2,10 +2,10 @@
 import Link from "next/link";
 import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import PageFooter from "../../../Sidebar/Footer/page";
-import Sidebars from "../../../Sidebar/Sidebars/PageSidebar";
-import PageNavbar from "../../../Sidebar/Navbar/PageNavbar";
-import ASO from "../../../AOS/AOS";
+import PageFooter from "../../Sidebar/Footer/Footer";
+import Sidebars from "../../Sidebar/Sidebars/PageSidebar";
+import PageNavbar from "../../Sidebar/Navbar/PageNavbar";
+import ASO from "../../AOS/AOS";
 import { SMS, emptySMS, today, statusBadge } from "../SMSFields";
 
 function SendContent() {

@@ -7,7 +7,7 @@ const PageNavbar = dynamic(
   () => import("../../(Page)/Sidebar/Navbar/PageNavbar"),
   { ssr: false }
 );
-const PageFooter = dynamic(() => import("../../(Page)/Sidebar/Footer/page"), {
+const PageFooter = dynamic(() => import("../../(Page)/Sidebar/Footer/Footer"), {
   ssr: false,
 });
 

@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import PageNavbar from "../../(Page)/Sidebar/Navbar/PageNavbar";
-import PageFooter from "../../(Page)/Sidebar/Footer/page";
+import PageFooter from "../../(Page)/Sidebar/Footer/Footer";
 import Sidebars from "../../(Page)/Sidebar/Sidebars/PageSidebar";
 import { getAuthUser } from "../../../../../lib/authUser";
 

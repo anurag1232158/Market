@@ -14,7 +14,7 @@ import {
   Legend,
 } from "recharts";
 import PageNavbar from "../../(Page)/Sidebar/Navbar/PageNavbar";
-import PageFooter from "../../(Page)/Sidebar/Footer/page";
+import PageFooter from "../Sidebar/Footer/Footer";
 import Sidebars from "../../(Page)/Sidebar/Sidebars/PageSidebar";
 
 export default function ReportProduct() {

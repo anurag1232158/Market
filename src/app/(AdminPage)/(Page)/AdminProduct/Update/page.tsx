@@ -3,7 +3,7 @@ import { useEffect, useState, FormEvent, ChangeEvent } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 
-import PageFooter from "../../Sidebar/Footer/page";
+import PageFooter from "../../Sidebar/Footer/Footer";
 import Sidebars from "../../Sidebar/Sidebars/PageSidebar";
 import PageNavbar from "../../Sidebar/Navbar/PageNavbar";
 import ASO from "../../AOS/AOS";

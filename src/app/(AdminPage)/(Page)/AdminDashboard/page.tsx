@@ -16,7 +16,7 @@ import {
   Legend,
 } from "recharts";
 import PageNavbar from "../Sidebar/Navbar/PageNavbar";
-import PageFooter from "../Sidebar/Footer/page";
+import PageFooter from "../Sidebar/Footer/Footer";
 import Sidebars from "../Sidebar/Sidebars/PageSidebar";
 import ASO from "../AOS/AOS";
 

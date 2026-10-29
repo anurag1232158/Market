@@ -1,3 +1,6 @@
+
+//app>(ReportPage)>page>Sldebar>Footer>page.tsx 
+
 "use client";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";

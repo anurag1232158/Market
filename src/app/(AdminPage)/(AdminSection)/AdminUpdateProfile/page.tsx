@@ -4,7 +4,7 @@ import { useEffect, useState, ChangeEvent, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 
 import PageNavbar from "../../(Page)/Sidebar/Navbar/PageNavbar";
-import PageFooter from "../../(Page)/Sidebar/Footer/page";
+import PageFooter from "../../(Page)/Sidebar/Footer/Footer";
 import Sidebars from "../../(Page)/Sidebar/Sidebars/PageSidebar";
 import { getAuthUser, setAuthUser } from "../../../../../lib/authUser";
 

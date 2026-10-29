@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import PageFooter from "../../Sidebar/Footer/page";
+import PageFooter from "../../Sidebar/Footer/Footer";
 import Sidebars from "../../Sidebar/Sidebars/PageSidebar";
 import PageNavbar from "../../Sidebar/Navbar/PageNavbar";
 import ASO from "../../AOS/AOS";
