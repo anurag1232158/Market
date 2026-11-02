@@ -1,3 +1,4 @@
+//api>setting>route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { readDb, updateDb } from "../../../../lib/db";
 import { getAdminSession } from "../../../../lib/session";
