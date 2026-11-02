@@ -137,10 +137,19 @@ const BookedProducts = () => {
               </div>
 
               <div className="card-body mb-0 pb-0">
-                <h6 className="card-title">
-                  {(product.description || "Pure Makhana").slice(0, 30)}
-                  {(product.description || "").length > 30 ? "..." : ""}
-                </h6>
+          <h6 className="card-title">
+  {/* Mobile */}
+  <span className="d-md-none">
+    {(product.description || "Pure Makhana").slice(0, 50)}
+    {(product.description || "Pure Makhana").length > 50 ? "..." : ""}
+  </span>
+
+  {/* Tablet & Desktop */}
+  <span className="d-none d-md-inline">
+    {(product.description || "Pure Makhana").slice(0, 30)}
+    {(product.description || "Pure Makhana").length > 30 ? "..." : ""}
+  </span>
+</h6>
                 <div className="text-muted small">
                   <span className="text-primary">{product.name}</span>
                 </div>

@@ -506,18 +506,39 @@ function ProductCard({
       </div>
 
       <div className="py-3 px-2 text-left flex-grow-1">
-        <h6 className="card-title fw-bold text-dark">
-          {product.name?.slice(0, 20)}
-          {(product.name?.length || 0) > 20 ? "..." : ""}
-        </h6>
-        <p className="card-text m-0 text-dark">
-          {product.description
-            ? product.description.length > 30
-              ? product.description.slice(0, 30) + "..."
-              : product.description
-            : "Pure & Organic Makhana"}
-        </p>
+      <h6 className="card-title fw-bold text-dark">
+  {/* Mobile */}
+  <span className="d-md-none">
+    {product.name?.slice(0, 60)}
+    {(product.name?.length || 0) > 60 ? "..." : ""}
+  </span>
 
+  {/* Desktop & Tablet */}
+  <span className="d-none d-md-inline">
+    {product.name?.slice(0, 20)}
+    {(product.name?.length || 0) > 20 ? "..." : ""}
+  </span>
+</h6>
+
+<p className="card-text m-0 text-dark">
+  {/* Mobile */}
+  <span className="d-md-none">
+    {product.description
+      ? product.description.length > 100
+        ? product.description.slice(0, 100) + "..."
+        : product.description
+      : "Pure & Organic Makhana"}
+  </span>
+
+  {/* Desktop & Tablet */}
+  <span className="d-none d-md-inline">
+    {product.description
+      ? product.description.length > 30
+        ? product.description.slice(0, 30) + "..."
+        : product.description
+      : "Pure & Organic Makhana"}
+  </span>
+</p>
         <div className="d-flex align-items-center justify-content-between flex-wrap gap-2 mt-2">
           <div className="d-flex align-items-center">
             {Array.from({ length: 5 }).map((_, i) => (

@@ -205,7 +205,7 @@ function ProductsContent() {
             <div className="row g-3">
               <div className="col-lg-6">
                 <label className="form-label small fw-bold text-muted mb-1">
-                  <i className="fa fa-magnifying-glass me-1"></i> Search
+                  <i className="fa fa-search me-1"></i> Search
                   Products
                 </label>
                 <div className="input-group">
@@ -324,8 +324,7 @@ function ProductsContent() {
                 {visibleProducts.map((product) => (
                   <div
                     key={product.id}
-                    className="col-lg-3 col-md-4 col-6 mb-2"
-                  >
+                    className="col-lg-3 col-md-4 col-12 mb-2">
                     <ProductCard
                       product={product}
                       onAdd={() => addToCart(product)}
@@ -542,18 +541,40 @@ function ProductCard({
         )}
       </div>
 
-      <div className="py-3 px-2 text-left flex-grow-1">
-        <h6 className="card-title text-dark">
-          {product.name?.slice(0, 20)}
-          {(product.name?.length || 0) > 20 ? "..." : ""}
-        </h6>
-        <p className="card-text m-0 text-dark fs-7">
-          {product.description
-            ? product.description.length > 30
-              ? product.description.slice(0, 30) + "..."
-              : product.description
-            : "Pure & Organic Makhana"}
-        </p>
+     <div className="py-3 px-2 text-left flex-grow-1">
+  <h6 className="card-title text-dark">
+    {/* Mobile */}
+    <span className="d-md-none">
+      {product.name?.slice(0, 60)}
+      {(product.name?.length || 0) > 60 ? "..." : ""}
+    </span>
+
+    {/* Tablet & Desktop */}
+    <span className="d-none d-md-inline">
+      {product.name?.slice(0, 20)}
+      {(product.name?.length || 0) > 20 ? "..." : ""}
+    </span>
+  </h6>
+
+  <p className="card-text m-0 text-dark fs-7">
+    {/* Mobile */}
+    <span className="d-md-none">
+      {product.description
+        ? product.description.length > 100
+          ? product.description.slice(0, 100) + "..."
+          : product.description
+        : "Pure & Organic Makhana"}
+    </span>
+
+    {/* Tablet & Desktop */}
+    <span className="d-none d-md-inline">
+      {product.description
+        ? product.description.length > 30
+          ? product.description.slice(0, 30) + "..."
+          : product.description
+        : "Pure & Organic Makhana"}
+    </span>
+  </p>
 
         <div className="d-flex align-items-center justify-content-between flex-wrap gap-1 mx-2 mt-2">
           <div className="d-flex align-items-center">

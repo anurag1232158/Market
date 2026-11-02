@@ -158,17 +158,38 @@ const FeaturedProducts = () => {
               {/* Title + Description */}
               <div className="py-2 px-2 text-left">
                 <h6 className="card-title fw-bold text-dark">
-                  {product.name && product.name.length > 30
-                    ? product.name.slice(0, 30) + "..."
-                    : product.name}
-                </h6>
-                <p className="card-text m-0 text-dark" style={{ fontSize: "14px" }}>
-                  {product.description
-                    ? product.description.length > 30
-                      ? product.description.slice(0, 30) + "..."
-                      : product.description
-                    : "Pure & Organic Makhana"}
-                </p>
+  {/* Mobile */}
+  <span className="d-md-none">
+    {product.name?.slice(0, 60)}
+    {(product.name?.length || 0) > 60 ? "..." : ""}
+  </span>
+
+  {/* Tablet & Desktop */}
+  <span className="d-none d-md-inline">
+    {product.name?.slice(0, 30)}
+    {(product.name?.length || 0) > 30 ? "..." : ""}
+  </span>
+</h6>
+
+<p className="card-text m-0 text-dark" style={{ fontSize: "14px" }}>
+  {/* Mobile */}
+  <span className="d-md-none">
+    {product.description
+      ? product.description.length > 60
+        ? product.description.slice(0, 60) + "..."
+        : product.description
+      : "Pure & Organic Makhana"}
+  </span>
+
+  {/* Tablet & Desktop */}
+  <span className="d-none d-md-inline">
+    {product.description
+      ? product.description.length > 30
+        ? product.description.slice(0, 30) + "..."
+        : product.description
+      : "Pure & Organic Makhana"}
+  </span>
+</p>
 
   {/* ✅ Rating + Weight + Price (Single Line) */}
 <div className="d-flex align-items-center justify-content-between flex-wrap gap-1 mt-2">

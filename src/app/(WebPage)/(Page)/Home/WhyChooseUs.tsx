@@ -158,10 +158,22 @@ const WhyChooseUs = () => {
 
               <div className="card-body my-0 py-2">
                 <h6 className="card-title my-0 py-0 fs-7">
-                  {(product.description || "Pure & Organic Makhana").length > 80
-                    ? `${(product.description || "").slice(0, 80)}...`
-                    : product.description || "Pure & Organic Makhana"}
-                </h6>
+  {/* Mobile */}
+  <span className="d-md-none">
+    {(product.description || "Pure & Organic Makhana").slice(0, 100)}
+    {(product.description || "Pure & Organic Makhana").length > 100
+      ? "..."
+      : ""}
+  </span>
+
+  {/* Tablet & Desktop */}
+  <span className="d-none d-md-inline">
+    {(product.description || "Pure & Organic Makhana").slice(0, 80)}
+    {(product.description || "Pure & Organic Makhana").length > 80
+      ? "..."
+      : ""}
+  </span>
+</h6>
                 <div className="text-muted small my-0 py-0">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <span

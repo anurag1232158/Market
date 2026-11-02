@@ -49,28 +49,48 @@ const OurStory = () => {
             </h6>
             <h4 className="fw-bold mb-4">A Family Tradition of Pure Makhana</h4>
 
-            <p
-              className="text-muted mb-4"
-              style={{ lineHeight: 1.9, fontSize: "15px" }}
-            >
-              हमारी कहानी बिहार के दरभंगा से शुरू होती है — जहाँ की मखाना
-              मिठास और गुणवत्ता पूरी दुनिया में मशहूर है। 1995 में हमारे
-              दादा जी ने एक छोटे से तालाब से मखाना उगाना शुरू किया था।
-              उस वक्त सिर्फ एक सपना था — <strong>शुद्धता और ईमानदारी</strong>{" "}
-              के साथ हर भारतीय घर तक ताज़ा Makhana पहुँचाना।
-            </p>
+{/* First Paragraph */}
+<p
+  className="text-muted mb-4"
+  style={{ lineHeight: 1.9, fontSize: "15px" }}
+>
+  {/* Mobile */}
+  <span className="d-md-none">
+    हमारी कहानी बिहार के दरभंगा से शुरू होती है। 1995 में हमारे दादा जी ने
+    मखाना उगाना शुरू किया। हमारा सपना है हर घर तक शुद्ध मखाना पहुँचाना।
+  </span>
 
-            <p
-              className="text-muted mb-4"
-              style={{ lineHeight: 1.9, fontSize: "15px" }}
-            >
-              आज, तीन पीढ़ियों बाद, हम गर्व से{" "}
-              <strong>10,000+ परिवारों</strong> तक शुद्ध, ऑर्गेनिक मखाना
-              पहुँचा रहे हैं। हम सीधे{" "}
-              <strong>500+ किसान परिवारों</strong> से जुड़े हैं — बिना
-              बिचौलियों के, बिना chemicals के। हर पैकेट में हमारी मेहनत
-              और आपका विश्वास है।
-            </p>
+  {/* Tablet & Desktop */}
+  <span className="d-none d-md-inline">
+    हमारी कहानी बिहार के दरभंगा से शुरू होती है — जहाँ की मखाना
+    मिठास और गुणवत्ता पूरी दुनिया में मशहूर है। 1995 में हमारे
+    दादा जी ने एक छोटे से तालाब से मखाना उगाना शुरू किया था।
+    उस वक्त सिर्फ एक सपना था — <strong>शुद्धता और ईमानदारी</strong>{" "}
+    के साथ हर भारतीय घर तक ताज़ा Makhana पहुँचाना।
+  </span>
+</p>
+
+{/* Second Paragraph */}
+<p
+  className="text-muted mb-4"
+  style={{ lineHeight: 1.9, fontSize: "15px" }}
+>
+  {/* Mobile */}
+  <span className="d-md-none">
+    आज हम 10,000+ परिवारों तक मखाना पहुँचा रहे हैं और 500+ किसान परिवारों
+    से सीधे जुड़े हैं। हर पैकेट में हमारी मेहनत और आपका विश्वास है।
+  </span>
+
+  {/* Tablet & Desktop */}
+  <span className="d-none d-md-inline">
+    आज, तीन पीढ़ियों बाद, हम गर्व से{" "}
+    <strong>10,000+ परिवारों</strong> तक शुद्ध, ऑर्गेनिक मखाना
+    पहुँचा रहे हैं। हम सीधे{" "}
+    <strong>500+ किसान परिवारों</strong> से जुड़े हैं — बिना
+    बिचौलियों के, बिना chemicals के। हर पैकेट में हमारी मेहनत
+    और आपका विश्वास है।
+  </span>
+</p>
 
             {/* ⭐ Key Points */}
             <div className="row g-3 mb-4">
@@ -129,7 +149,7 @@ const OurStory = () => {
 
       {/* ⭐ Stats Row (Bottom) */}
       <div className="row g-3 mt-5 pt-4 justify-content-center">
-        <div className="col-lg-3 col-md-6">
+        <div className="col-lg-3 col-md-6 col-6">
           <div className="text-center p-4 rounded-4 shadow-sm bg-light hover-effect">
             <i className="fa fa-solid fa-history fa-3x text-primary mb-3"></i>
             <h4 className="fw-bold mb-1">25+</h4>
@@ -137,7 +157,7 @@ const OurStory = () => {
           </div>
         </div>
 
-        <div className="col-lg-3 col-md-6">
+        <div className="col-lg-3 col-md-6 col-6">
           <div className="text-center p-4 rounded-4 shadow-sm bg-light hover-effect">
             <i className="fa fa-solid fa-users fa-3x text-success mb-3"></i>
             <h4 className="fw-bold mb-1">10,000+</h4>
@@ -145,7 +165,7 @@ const OurStory = () => {
           </div>
         </div>
 
-        <div className="col-lg-3 col-md-6">
+        <div className="col-lg-3 col-md-6 col-6">
           <div className="text-center p-4 rounded-4 shadow-sm bg-light hover-effect">
             <i className="fa fa-solid fa-font-awesome fa-3x text-warning mb-3"></i>
             <h4 className="fw-bold mb-1">500+</h4>
@@ -153,7 +173,7 @@ const OurStory = () => {
           </div>
         </div>
 
-        <div className="col-lg-3 col-md-6">
+        <div className="col-lg-3 col-md-6 col-6">
           <div className="text-center p-4 rounded-4 shadow-sm bg-light hover-effect">
             <i className="fa fa-solid fa-star fa-3x text-danger mb-3"></i>
             <h4 className="fw-bold mb-1">5.0 ★</h4>
