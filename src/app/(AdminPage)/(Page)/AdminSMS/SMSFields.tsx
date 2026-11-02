@@ -52,7 +52,25 @@ export const emptySMS: SMS = {
   updatedAt: "",
   sentAt: "",
 };
+/* ---------------- STATUS BADGE ---------------- */
 
+export const statusBadge = (status: string) => {
+  const badges: Record<string, string> = {
+    Draft: "bg-secondary",
+    Scheduled: "bg-info",
+    Sending: "bg-primary",
+    Sent: "bg-success",
+    "Partially Sent": "bg-warning text-dark",
+    Failed: "bg-danger",
+    Cancelled: "bg-dark",
+  };
+
+  return (
+    <span className={`badge ${badges[status] || "bg-secondary"}`}>
+      {status || "Unknown"}
+    </span>
+  );
+};
 /* ---------------- OPTIONS ---------------- */
 
 export const MESSAGE_TYPES = [

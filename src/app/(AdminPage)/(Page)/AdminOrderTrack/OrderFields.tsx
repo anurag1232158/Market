@@ -1,53 +1,40 @@
 "use client";
 import { ChangeEvent, ReactNode } from "react";
 
-/* ============================================================
-   ORDER — Customer orders, both retail and wholesale
-   ============================================================ */
-
-export type OrderTrack = {
+export type Order  = {
   id: string;
-  orderNo: string;              // Order number (ORD-XXXXXX)
-  orderDate: string;            // Order date
-  /* Customer Info */
+  orderNo: string;              
+  orderDate: string;            
   customerName: string;
   customerEmail: string;
   customerPhone: string;
-  customerType: string;         // Retail / Wholesale
-  /* Shipping Address */
+  customerType: string;         
   shippingAddress: string;
   shippingCity: string;
   shippingState: string;
   shippingPin: string;
   shippingCountry: string;
-  /* Products (JSON string of items) */
-  items: string;                // JSON array as string
-  /* Amounts */
-  subtotal: string;             // Before tax/discount
-  discount: string;             // Discount amount
-  tax: string;                  // GST
-  shippingCharge: string;       // Shipping fee
-  totalAmount: string;          // Final total
-  /* Payment */
-  paymentMethod: string;        // COD / UPI / Card / Bank Transfer
-  paymentStatus: string;        // Pending / Paid / Failed / Refunded
-  paymentId: string;            // Transaction ID
-  /* Order Status */
-  orderStatus: string;          // Pending / Confirmed / Packed / Shipped / Delivered / Cancelled
-  /* Shipping */
-  courier: string;              // Delivery partner
-  trackingId: string;           // Tracking number
+  items: string;               
+  subtotal: string;             
+  discount: string;             
+  tax: string;                 
+  shippingCharge: string;      
+  totalAmount: string;        
+  paymentMethod: string;        
+  paymentStatus: string;        
+  paymentId: string;            
+  orderStatus: string;         
+  courier: string;              
+  trackingId: string;
   shippedDate: string;
   deliveredDate: string;
-  /* Notes */
-  customerNote: string;         // Customer ka message
-  adminNote: string;            // Internal note
-  /* Meta */
+  customerNote: string;    
+  adminNote: string;      
   createdAt: string;
   updatedAt: string;
 };
 
-export const emptyOrder: OrderTrack = {
+export const emptyOrder: Order = {
   id: "",
   orderNo: "",
   orderDate: "",
@@ -80,10 +67,9 @@ export const emptyOrder: OrderTrack = {
   updatedAt: "",
 };
 
-/* ---------------- DROPDOWN OPTIONS ---------------- */
+
 
 export const CUSTOMER_TYPES = ["Retail", "Wholesale", "Distributor", "Retailer"];
-
 export const STATES = [
   "Bihar", "Delhi", "Maharashtra", "Uttar Pradesh", "West Bengal",
   "Karnataka", "Tamil Nadu", "Gujarat", "Rajasthan", "Punjab",
@@ -91,7 +77,7 @@ export const STATES = [
 ];
 
 export const PAYMENT_METHODS = [
-  "COD",            // Cash on Delivery
+  "COD",           
   "UPI",
   "Card",
   "Net Banking",
@@ -129,7 +115,6 @@ export const COURIERS = [
   "Other",
 ];
 
-/* ---------------- HELPERS ---------------- */
 
 export const today = () => new Date().toISOString().split("T")[0];
 

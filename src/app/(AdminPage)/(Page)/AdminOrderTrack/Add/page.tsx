@@ -10,13 +10,13 @@ import OrderFields, {
   Order, emptyOrder, validateOrder, prepareOrder, today,
 } from "../OrderFields";
 import { clearAuthUser } from "../../../../../../lib/authUser";
-
+ 
 function AdminAddOrder() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [errorsMassage, setErrorsMassage] = useState<{ [key: string]: string }>({});
   const [show, setShow] = useState(false);
   const [data, setData] = useState<Order>({
-    ...emptyOrder,
+ ...emptyOrder,
     orderDate: today(),
   });
   const router = useRouter();

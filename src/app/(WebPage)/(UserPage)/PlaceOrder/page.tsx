@@ -233,7 +233,7 @@ export default function PlaceOrderPage() {
                   <table className="table table-bordered mb-0">
                     <tbody className="table">
                       <tr>
-                        <th width="35%">Name</th>
+                        <th style={{ width: "35%" }}>Name</th>
                         <td>{order.customerName}</td>
                       </tr>
                       <tr>

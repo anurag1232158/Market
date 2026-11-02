@@ -186,7 +186,7 @@ export default function BestsellerFields({ data, errors, show, onChange }: Props
           <textarea name="content" rows={6} value={data.content} onChange={onChange} placeholder="Write detailed content here..." className={cls("content")} />
         </Field>
        
-        <Field label="Image :" hint="Section image" className="col-3">
+       <Field label="Image :" hint="Section image" col="col-3">
           <input type="file" name="image" accept="image/*" className="form-control mt-2" onChange={onChange} />
           {data.image && (
             <div className="mt-2">
@@ -195,7 +195,7 @@ export default function BestsellerFields({ data, errors, show, onChange }: Props
           )}
         </Field>
       
-        <Field label="Icon :" hint="FontAwesome icon class" className="col-3">
+        <Field label="Icon :" hint="FontAwesome icon class" col="col-3">
           <select name="icon" value={data.icon} onChange={onChange} className="form-control mt-2">
             <Options list={ICONS} placeholder="Select Icon" />
           </select>
@@ -207,7 +207,7 @@ export default function BestsellerFields({ data, errors, show, onChange }: Props
           )}
         </Field>
 
-        <Field label="Order :" error={err("order")} hint="0 = first" className="col-2">
+        <Field label="Order :" error={err("order")} hint="0 = first" col="col-2">
           <input type="number" name="order" min={0} value={data.order} onChange={onChange} className={cls("order")} />
         </Field>
        
@@ -216,16 +216,16 @@ export default function BestsellerFields({ data, errors, show, onChange }: Props
       {/* ============== SECTION 2: Product Info (Frontend) ============== */}
       <h6 className="fw-bold mb-3 bg-success text-white p-2 rounded mt-4">Product Details (Frontend)</h6>
       <div className="row">
-        <Field label="Product Name :" col="col-md-4" hint="e.g. Premium Jumbo Makhana" className="col-3">
+       <Field label="Product Name :" col="col-md-3" hint="e.g. Premium Jumbo Makhana">
           <input type="text" name="name" value={data.name} onChange={onChange} placeholder="Enter product name" className="form-control mt-2" />
         </Field>
-        <Field label="Slug (URL) :" col="col-md-3" hint="e.g. premium-jumbo-makhana" className="col-3">
+        <Field label="Slug (URL) :" col="col-md-3" hint="e.g. premium-jumbo-makhana">
           <input type="text" name="slug" value={data.slug} onChange={onChange} placeholder="premium-jumbo-makhana" className="form-control mt-2" />
         </Field>
-        <Field label="Category :" col="col-md-3" hint="e.g. Flavoured Makhana" className="col-3">
+        <Field label="Category :" col="col-md-3" hint="e.g. Flavoured Makhana">
           <input type="text" name="category" value={data.category} onChange={onChange} placeholder="Flavoured Makhana" className="form-control mt-2" />
         </Field>
-        <Field label="Flavour :" col="col-md-2" hint="e.g. Chocolate" className="col-3">
+        <Field label="Flavour :" col="col-md-3" hint="e.g. Chocolate">
           <input type="text" name="flavour" value={data.flavour} onChange={onChange} placeholder="Chocolate" className="form-control mt-2" />
         </Field>
       </div>

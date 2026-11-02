@@ -81,8 +81,11 @@ function AdminAddBestseller() {
       alert("Something went wrong.");
     }
   };
-  const resetForm = () => { setData(emptybestseller); setErrorsMassage({}); setShow(false);};
-
+  const resetForm = () => {
+  setData(emptyBestseller);
+  setErrorsMassage({});
+  setShow(false);
+  };
   return (
     <>
       <ASO />

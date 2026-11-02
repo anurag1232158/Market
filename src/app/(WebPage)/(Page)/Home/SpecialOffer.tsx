@@ -27,7 +27,8 @@ interface Product {
 
 const SpecialOffer = () => {
   const router = useRouter();
-  const [offers, setOffers] = useState<Product[]>([]);
+const [offers, setOffers] = useState<Product[]>([]);
+const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   const settings = {
     infinite: offers.length > 4,
@@ -242,6 +243,90 @@ const SpecialOffer = () => {
     </div>
   ))}
 </Slider>
+{selectedProduct && (
+  <div
+    className="modal show d-block"
+    style={{ background: "rgba(0,0,0,0.6)" }}
+    onClick={() => setSelectedProduct(null)}
+  >
+    <div
+      className="modal-dialog modal-dialog-centered"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <div className="modal-content">
+        <div className="modal-header">
+          <h5 className="modal-title fw-bold">
+            {selectedProduct.name}
+          </h5>
+          <button
+            type="button"
+            className="btn-close"
+            onClick={() => setSelectedProduct(null)}
+          ></button>
+        </div>
+
+        <div className="modal-body text-center">
+          <img
+            src={
+              selectedProduct.pic
+                ? `/assets/images/${selectedProduct.pic}`
+                : "/assets/images/placeholder.png"
+            }
+            alt={selectedProduct.name}
+            className="img-fluid rounded mb-3"
+            style={{ maxHeight: "250px", objectFit: "cover" }}
+          />
+
+          <h5 className="fw-bold text-primary">
+            {selectedProduct.name}
+          </h5>
+
+          <p className="text-muted">
+            {selectedProduct.description}
+          </p>
+
+          <h5 className="text-success fw-bold">
+            ₹{new Intl.NumberFormat("en-IN").format(
+              calculateFinalPrice(
+                selectedProduct.price,
+                selectedProduct.discount
+              )
+            )}
+          </h5>
+
+          <p className="mb-1">
+            Weight: {selectedProduct.weight}
+          </p>
+
+          <p className="mb-0">
+            Stock: {selectedProduct.stock}
+          </p>
+        </div>
+
+        <div className="modal-footer">
+          <button
+            className="btn btn-secondary"
+            onClick={() => setSelectedProduct(null)}
+          >
+            Close
+          </button>
+
+          <button
+            className="btn btn-success"
+            disabled={Number(selectedProduct.stock) <= 0}
+            onClick={() => {
+              addToCart(selectedProduct);
+              setSelectedProduct(null);
+            }}
+          >
+            <i className="fa fa-shopping-cart me-1"></i>
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
     </div>
   );
 };

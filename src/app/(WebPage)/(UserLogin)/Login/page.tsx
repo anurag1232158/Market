@@ -1,6 +1,7 @@
-// src/app/(WebPage)/(UserLogin)/Login/page.tsx
+
 "use client";
-import { useEffect, useState } from "react";
+
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { setAuthUser, setSessionTime } from "../../../../../lib/authUser";
 
@@ -13,13 +14,18 @@ const post = async (url: string, body: any) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
   });
-  return { ok: res.ok, data: await res.json().catch(() => ({})) };
+
+  return {
+    ok: res.ok,
+    data: await res.json().catch(() => ({})),
+  };
 };
 
-export default function LoginPage() {
+function LoginContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const redirect = searchParams.get("redirect") || "/Profile"; // ⭐ redirect support
+
+  const redirect = searchParams.get("redirect") || "/Profile";
 
   const [step, setStep] = useState("mobile");
   const [mobile, setMobile] = useState("");
@@ -36,55 +42,72 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (timer <= 0) return;
+
     const t = setTimeout(() => setTimer((s) => s - 1), 1000);
+
     return () => clearTimeout(t);
   }, [timer]);
 
   const sendOtp = async () => {
     setError("");
     setLoading(true);
+
     try {
       const { ok, data } = await post("/api/send-otp", { phone });
+
       if (ok && data.success) {
         setOtp("");
         setTimer(RESEND_SECONDS);
         return true;
       }
+
       setError(data.message || "Could not send OTP. Try again!");
     } catch {
       setError("Something went wrong. Try again!");
     } finally {
       setLoading(false);
     }
+
     return false;
   };
 
   const handleSendOtp = async (e: any) => {
     e.preventDefault();
+
     if (!/^[6-9]\d{9}$/.test(mobile)) {
       setError("Please enter a valid 10-digit mobile number");
       return;
     }
-    if (await sendOtp()) setStep("otp");
+
+    if (await sendOtp()) {
+      setStep("otp");
+    }
   };
 
   const handleVerifyOtp = async (e: any) => {
     e.preventDefault();
+
     if (!otp) {
       setError("Please enter the OTP");
       return;
     }
+
     setError("");
     setLoading(true);
+
     try {
-      const { ok, data } = await post("/api/verify-otp", { phone, code: otp });
+      const { ok, data } = await post("/api/verify-otp", {
+        phone,
+        code: otp,
+      });
+
       if (!ok || !data.success || !data.user) {
         setError(data.message || "Could not verify OTP. Try again!");
         return;
       }
 
-      // ✅ 1. User data save
       const now = Date.now();
+
       setAuthUser("user", {
         ...data.user,
         phone,
@@ -93,10 +116,8 @@ export default function LoginPage() {
         expiry: now + SESSION_MS,
       });
 
-      // ✅ 2. Session time save (2 hours) — यही missing था
       setSessionTime("user");
 
-      // ✅ 3. Redirect (login के बाद वापस OrderTrack पर)
       router.replace(redirect);
     } catch {
       setError("Something went wrong. Try again!");
@@ -132,6 +153,7 @@ export default function LoginPage() {
               <form onSubmit={handleSendOtp}>
                 <div className="mb-4 d-flex flex-nowrap align-items-center">
                   <i className="fa fa-phone color-orange fs-6 fs-sm-5 flex-shrink-0"></i>
+
                   <input
                     type="tel"
                     className="form-control mx-2 py-2"
@@ -139,10 +161,13 @@ export default function LoginPage() {
                     placeholder="Enter Mobile Number"
                     maxLength={10}
                     value={mobile}
-                    onChange={(e) => setMobile(e.target.value.replace(/\D/g, ""))}
+                    onChange={(e) =>
+                      setMobile(e.target.value.replace(/\D/g, ""))
+                    }
                     required
                   />
                 </div>
+
                 <button
                   type="submit"
                   disabled={loading}
@@ -174,6 +199,7 @@ export default function LoginPage() {
 
                 <div className="mb-4 d-flex flex-nowrap align-items-center justify-content-center">
                   <i className="fa fa-key color-orange fs-6 fs-sm-5 flex-shrink-0"></i>
+
                   <input
                     type="text"
                     inputMode="numeric"
@@ -183,7 +209,9 @@ export default function LoginPage() {
                     placeholder="Enter OTP"
                     maxLength={6}
                     value={otp}
-                    onChange={(e) => setOtp(e.target.value.replace(/\D/g, ""))}
+                    onChange={(e) =>
+                      setOtp(e.target.value.replace(/\D/g, ""))
+                    }
                     required
                   />
                 </div>
@@ -199,7 +227,9 @@ export default function LoginPage() {
 
                 <div className="text-center mt-3">
                   {timer > 0 ? (
-                    <span className="small text-muted">Resend OTP in {timer}s</span>
+                    <span className="small text-muted">
+                      Resend OTP in {timer}s
+                    </span>
                   ) : (
                     <button
                       type="button"
@@ -217,5 +247,13 @@ export default function LoginPage() {
         </div>
       </div>
     </section>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={null}>
+      <LoginContent />
+    </Suspense>
   );
 }
