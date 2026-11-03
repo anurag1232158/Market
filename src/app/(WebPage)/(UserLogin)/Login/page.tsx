@@ -136,7 +136,7 @@ function LoginContent() {
           <div className="col-12 col-md-7 col-lg-6 p-4 p-sm-4 p-md-5 bg-white rounded-3 shadow-lg"
             style={{ border: "1px solid #dadce0" }}>
             <h2 className="fw-bold text-dark mb-2 text-center fs-3 fs-md-4">
-              <i className="fa fa-mobile fa-swing me-2 color-orange"></i>
+              <i className="fa fa-mobile text-primary fs-2 me-2 mobile-swing"></i>
               {step === "mobile" ? "Login" : "Verify OTP"}
             </h2>
 

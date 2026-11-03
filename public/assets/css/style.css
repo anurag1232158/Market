@@ -1250,3 +1250,28 @@ body {
 .fs-07{
   font-size: 11px;
 }
+
+
+.mobile-swing {
+  display: inline-block;
+  transform-origin: 50% 10%;
+  animation: mobileSwing 1.5s ease-in-out infinite;
+}
+
+@keyframes mobileSwing {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(15deg);
+  }
+  40% {
+    transform: rotate(-15deg);
+  }
+  60% {
+    transform: rotate(10deg);
+  }
+  80% {
+    transform: rotate(-10deg);
+  }
+}
