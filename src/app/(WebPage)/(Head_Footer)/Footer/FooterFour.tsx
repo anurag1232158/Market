@@ -24,8 +24,7 @@ const FooterFour = () => {
             <i className="fa fa-arrow-right color-orange mx-2"></i> Feedback
           </Link>
           <Link className="text-light mb-2 fw" href="/Terms">
-            <i className="fa fa-arrow-right color-orange mx-2"></i> Terms &
-            Conditions
+            <i className="fa fa-arrow-right color-orange mx-2"></i> T&Cs
           </Link>
         </div>
       </div>

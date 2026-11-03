@@ -37,7 +37,7 @@ const Carousel = () => {
           : json.product || json.data || json.products || [];
 
         const activeProducts = productArray.filter(
-          (p) => p && p.status === "Active"
+          (p) => p && p.status === "Active",
         );
         setProducts(activeProducts);
       })
@@ -77,10 +77,7 @@ const Carousel = () => {
     <div className="container-fluid w-95 py-4">
       <div className="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
         <h2 className="mb-0 fw-bold">New Added Products</h2>
-        <Link
-          href="/Products"
-          className="text-primary text-decoration-none btn btn-outline-warning btn-sm border-1"
-        >
+        <Link href="/Products" className="text-primary text-decoration-none btn btn-outline-warning btn-sm border-1">
           See all
         </Link>
       </div>
@@ -103,11 +100,12 @@ const Carousel = () => {
       </div>
 
       {filteredProducts.length === 0 ? (
-        <p className="text-muted text-center py-4">No products in this category.</p>
+        <p className="text-muted text-center py-4">
+          No products in this category.
+        </p>
       ) : (
         <div className="row">
           <Slider {...settings}>
-            {/* ✅ सीधे div — कोई Fragment नहीं */}
             {filteredProducts.map((product) => {
               const price = Number(product.price);
               const discount = Number(product.discount || 0);
@@ -120,15 +118,9 @@ const Carousel = () => {
                 <div key={product.id} className="px-2">
                   <div className="blog-item bg-light rounded overflow-hidden shadow-sm bordered">
                     <div className="blog-img position-relative overflow-hidden shadow-lg">
-                      <Link
-                        href={`/Products/${product.slug || product.id}`}
-                        className="text-decoration-none"
-                      >
+                      <Link href={`/Products/${product.slug || product.id}`} className="text-decoration-none">
                         <div className="position-relative overflow-hidden">
-                          <img
-                            className="img-fluid w-100"
-                            src={imageSrc}
-                            alt={product.name}
+                          <img className="img-fluid w-100" src={imageSrc} alt={product.name}
                             style={{ height: "240px", objectFit: "cover" }}
                             onError={(e) => {
                               (e.target as HTMLImageElement).src =
@@ -137,52 +129,63 @@ const Carousel = () => {
                             }}
                           />
                           {discount > 0 && (
-                            <span className="badge bg-danger position-absolute top-0 end-0 mt-1 px-2 py-1 fs-7">
+                            <span className="badge bg-danger position-absolute top-0 end-0 mt-1 px-2 py-1 fs-8">
                               {discount}% OFF
                             </span>
                           )}
                           {product.isBestSeller === "Yes" && (
-                            <span className="badge bg-warning text-dark position-absolute top-0 start-0 mt-1 px-2 py-1 fs-7">
+                            <span className="badge bg-warning text-dark position-absolute top-0 start-0 mt-1 px-2 py-1 fs-8">
                               ⭐ Best Seller
                             </span>
                           )}
                           {product.isVrat === "Yes" && (
-                            <span className="badge bg-success position-absolute bottom-0 start-0 m-2 px-2 py-1 rounded-pill fw-bold shadow">
+                            <span className="badge bg-success position-absolute bottom-0 start-0 m-1 px-2 py-1 rounded-pill fw-bold fs-8 shadow">
                               🌿 Vrat
                             </span>
                           )}
                         </div>
 
                         <div className="card-body">
-                          <h6 className="card-title text-dark mb-1 text-truncate">
-                            {product.name}
-                          </h6>
-                          <p className="text-muted small mb-2">
-                            {product.weight} • {product.flavour}
-                          </p>
+                          <h6 className="card-title text-dark mb-1 text-truncate">  {product.name}</h6>
+                          <p className="text-muted small mb-2">  {product.weight} • {product.flavour}</p>
 
                           <div className="d-flex align-items-center mb-2">
+                            {/* Rating Left */}
                             <span className="text-warning fw-bold me-1">
-                              {"★".repeat(Math.round(Number(product.rating || 0)))}
+                              {"★".repeat(
+                                Math.min(
+                                  5,
+                                  Math.max(
+                                    0,
+                                    Math.round(Number(product.rating || 0)),
+                                  ),
+                                ),
+                              )}
                             </span>
-                            <span className="text-secondary">
-                              {"☆".repeat(5 - Math.round(Number(product.rating || 0)))}
-                            </span>
-                            <span className="text-muted small ms-2">
-                              ({product.rating || "0"})
-                            </span>
-                          </div>
 
-                          {/* ✅ Price भी दिखाओ (पहले नहीं था) */}
-                          <div className="d-flex align-items-center gap-1">
-                            {discount > 0 && (
-                              <del className="text-muted" style={{ fontSize: "12px" }}>
-                                ₹{new Intl.NumberFormat("en-IN").format(price)}
-                              </del>
-                            )}
-                            <strong className="text-success" style={{ fontSize: "15px" }}>
-                              ₹{new Intl.NumberFormat("en-IN").format(finalPrice)}
-                            </strong>
+                            <span className="text-secondary">
+                              {"☆".repeat(
+                                5 -
+                               Math.min( 5, Math.max( 0, Math.round(Number(product.rating || 0)), ), ),
+                              )}
+                            </span>
+
+                            <span className="text-muted small ms-2">  ({product.rating || "0"})</span>
+
+                            {/* Price Right */}
+                            <div className="ms-auto d-flex align-items-center gap-1">
+                              {discount > 0 && (
+                                <>
+                                  <del className="text-danger fs-7"> ₹ {new Intl.NumberFormat("en-IN").format(   price, )}</del>
+                                  {discount > 0 && ( <span className="text-primary fs-7">{discount}%Off </span>)}
+                                  <strong className="text-success fs-7 fw-bold"> ₹ {new Intl.NumberFormat("en-IN").format(  finalPrice, )}</strong>
+                                </>
+                              )}
+
+                              {discount <= 0 && (
+                               <strong className="text-success fs-6 fw-bold" > ₹ {new Intl.NumberFormat("en-IN").format( finalPrice, )}</strong>
+                              )}
+                            </div>
                           </div>
                         </div>
                       </Link>

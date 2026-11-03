@@ -73,7 +73,7 @@ export default function HelpUs() {
       } else {
         alert("❌ Failed to submit message.");
       }
-    } catch (err) {
+    } catch (err) { 
       console.error("Submit failed:", err);
       alert("❌ Error submitting message.");
     } finally {
@@ -83,7 +83,7 @@ export default function HelpUs() {
 
   return (
     <section className="bg-gray py-4">
-      <div className="container">
+      <div className="container-fluid w-90">
         {/* ===================== HELP HEADER ===================== */}
         <div className="text-left mb-2">
           <h2 className="fw-bold">Help Us </h2>

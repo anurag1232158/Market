@@ -54,7 +54,7 @@ export default function TermsPage() {
     <>
       {/* ====================== TERMS CONTENT ====================== */}
 <section className="py-2 py-lg-3">
-  <div className="container">
+  <div className="container-fluid w-90">
     <div className="text-center mb-3">
       <h3 className="fw-bold">📜 Terms & Conditions</h3>
       <p className="text-muted mb-0">
@@ -156,7 +156,7 @@ export default function TermsPage() {
 
       {/* ====================== ADDITIONAL INFO CARDS ====================== */}
       <section className="py-3">
-        <div className="container">
+        <div className="container-fluid w-90">
           <h4 className="fw-bold mb-4">📚 Additional Information</h4>
 
           <div className="row g-3">
@@ -286,7 +286,7 @@ export default function TermsPage() {
 
       {/* ====================== FAQ ====================== */}
       <section className="py-5 pt-3">
-        <div className="container">
+        <div className="container-fluid w-90">
           <h4 className="fw-bold mb-4">🎉 Frequently Asked Questions</h4>
           <p className="lead fs-6 text-muted mb-4">
             Here are some common questions and answers to help you understand our terms and services better.

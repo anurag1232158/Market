@@ -60,7 +60,7 @@ export default function SupportPage() {
 
   return (
     <section className="bg-gray py-5">
-      <div className="container">
+      <div className="container-fluid w-90">
         {/* Header */}
         <div className="section-title text-left position-relative pb-1 mb-3">
           <h3 className="fw-bold mb-3">💬 Get Support</h3>

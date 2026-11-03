@@ -10,7 +10,7 @@ export default function AdminLoginPage() {
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+    setCredentials({ ...credentials, [e.target.name]: e.target.value }); 
     setError("");
   };
 
@@ -56,8 +56,25 @@ export default function AdminLoginPage() {
     <section className="bg-Login1 py-5 h-100 w-100 d-flex align-items-center justify-content-center"
       style={{ minHeight: "100vh" }}>
       <div className="container-fluid w-90">
-        <div className="row justify-content-center">
-          <div className="col-md-6 col-11 shadow px-3 py-5 p-lg-5 bg-white rounded">
+        <div className="row justify-content-center justify-content-md-center align-items-center">
+          {/* ===== LOGO - Bigger on mobile ===== */}
+          <div className="col-12 col-md-5 col-lg-5 d-flex justify-content-center mb-4 mb-md-0">
+            <div className="logo text-center">
+              <img
+                src={`/assets/images/logo.jpg`}
+                alt="Profile"
+                className="img-fluid shadow-md"
+                style={{
+                  width: "clamp(50px, 35vw, 260px)", // mobile pe bada, desktop pe controlled
+                  height: "auto",
+                  objectFit: "contain",
+                }}
+              />
+            </div>
+          </div>
+
+          <div className="col-12 col-md-7 col-lg-6 p-4 p-sm-4 p-md-5 bg-white rounded-3 shadow-lg"
+            style={{ border: "1px solid #dadce0" }}>
             <h2 className="fw-bold text-dark mb-4 text-center">
               <i className="fa fa-user me-2 color-orange"></i> Login
             </h2>

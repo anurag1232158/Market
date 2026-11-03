@@ -130,7 +130,7 @@ export default function SocialMediaPage() {
 
   return (
     <section className="bg-gray py-5">
-      <div className="container">
+      <div className="container-fluid w-90">
         {/* ============ FAQ ============ */}
         <div className="section-title section-title1 text-left position-relative pb-1 mb-4 mx-auto">
           <h3 className="fw-bold">🌐 Frequently Asked Questions</h3>

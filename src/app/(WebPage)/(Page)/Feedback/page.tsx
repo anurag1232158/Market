@@ -84,7 +84,7 @@ export default function FeedbackPage() {
     <>
       {/* ====================== FAQ SECTION ====================== */}
       <section className="bg-gray py-5">
-        <div className="container">
+        <div className="container-fluid w-90">
           <div className="text-left mb-3">
             <h4 className="fw-bold mb-2">📝 Give Feedback</h4>
             <p className="text-muted mb-0 fs-7">
@@ -155,7 +155,7 @@ export default function FeedbackPage() {
 
       {/* ====================== FEEDBACK FORM ====================== */}
       <section className="bg-gray py-2">
-        <div className="container">
+        <div className="container-fluid w-90">
           <div className="text-left mb-2">
             <h4 className="fw-bold mb-2">📋 Feedback Form</h4>
             <p className="text-muted mb-0 fs-7">हम आपकी राय को महत्व देते हैं। कृपया नीचे form भरें और अपनी बात हमें बताएँ।</p>

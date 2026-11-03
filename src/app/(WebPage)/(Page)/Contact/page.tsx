@@ -88,7 +88,7 @@ export default function ContactPage() {
     <>
       {/* CONTACT FORM + INFO CARDS */}
       <section className="bg-gray pt-5">
-        <div className="container">
+        <div className="container-fluid w-90">
           <div className="text-Left mb-4">
             <div className="section-title text-left position-relative pb-1 mb-2 mx-auto">
               <h3 className="fw-bold">Contact Us</h3>
@@ -107,28 +107,16 @@ export default function ContactPage() {
               </div>
               <form onSubmit={postData} autoComplete="off">
                 <div className="mb-4">
-                  <input
-                    type="text"
-                    name="name"
-                    value={data.name}
-                    onChange={handleChange}
-                    placeholder="Enter full name"
-                    className="form-control bg-body"
-                  />
+                  <input type="text" name="name" value={data.name} 
+                   onChange={handleChange} placeholder="Enter full name" className="form-control bg-body" />
                   {errors.name && (
                     <p className="text-danger small mt-1">{errors.name}</p>
                   )}
                 </div>
 
                 <div className="mb-4">
-                  <input
-                    type="email"
-                    name="email"
-                    value={data.email}
-                    onChange={handleChange}
-                    placeholder="Enter email address"
-                    className="form-control"
-                  />
+                  <input type="email" name="email" value={data.email} onChange={handleChange} 
+                   placeholder="Enter email address" className="form-control"/>
                   {errors.email && (
                     <p className="text-danger small mt-1">{errors.email}</p>
                   )}
@@ -136,27 +124,15 @@ export default function ContactPage() {
 
                 <div className="mb-4">
                   <div className="input-group">
-                    <select
-                      name="countryCode"
-                      value={data.countryCode}
-                      onChange={handleChange}
-                      className="form-select"
-                      style={{ maxWidth: "120px" }}
-                    >
+                    <select name="countryCode" value={data.countryCode} onChange={handleChange} 
+                      className="form-select" style={{ maxWidth: "120px" }}>
                       <option value="+91">🇮🇳 +91</option>
                       <option value="+1">🇺🇸 +1</option>
                       <option value="+44">🇬🇧 +44</option>
                       <option value="+971">🇦🇪 +971</option>
                     </select>
-                    <input
-                      type="text"
-                      name="phone"
-                      value={data.phone}
-                      onChange={handleChange}
-                      placeholder="Enter 10-digit phone"
-                      className="form-control"
-                      maxLength={10}
-                    />
+                    <input type="text" name="phone" value={data.phone} onChange={handleChange} 
+                      placeholder="Enter 10-digit phone" className="form-control" maxLength={10}/>
                   </div>
                   {errors.phone && (
                     <p className="text-danger small mt-1">{errors.phone}</p>
@@ -164,30 +140,19 @@ export default function ContactPage() {
                 </div>
 
                 <div className="mb-4">
-                  <textarea
-                    name="message"
-                    value={data.message}
-                    onChange={handleChange}
-                    rows={4}
-                    placeholder="अपना message लिखें (order, product, ya feedback)"
-                    className="form-control"
-                  ></textarea>
+                  <textarea name="message" value={data.message} onChange={handleChange} rows={4}
+                    placeholder="अपना message लिखें (order, product, ya feedback)" className="form-control" >
+                  </textarea>
                 </div>
 
-                <button
-                  type="submit"
-                  className="btn btn-primary px-4 w-100"
-                  disabled={submitting}
-                >
+                <button type="submit" className="btn btn-primary px-4 w-100" disabled={submitting}>
                   {submitting ? (
                     <>
-                      {" "}
                       <i className="fa fa-solid fa-spinner fa-spin me-2"></i>{" "}
                       Sending...
                     </>
                   ) : (
                     <>
-                      {" "}
                       <i className="fa fa-solid fa-paper-plane me-2"></i> Submit
                     </>
                   )}
@@ -203,15 +168,8 @@ export default function ContactPage() {
                     <i className="fa fa-solid fa-circle-question text-primary me-2"></i>
                     Need help?
                   </h6>
-                  <p className="mb-1 text-muted small">
-                    Order, delivery, ya product के बारे में कोई भी सवाल?
-                  </p>
-                  <Link
-                    href="/HelpUs"
-                    className="small text-decoration-none text-primary"
-                  >
-                    Open Help Center →
-                  </Link>
+                  <p className="mb-1 text-muted small"> Order, delivery, ya product के बारे में कोई भी सवाल?</p>
+                  <Link href="/HelpUs" className="small text-decoration-none text-primary"> Open Help Center →</Link>
                 </div>
 
                 <div className="border rounded p-3 shadow bg-white hover-effect">
@@ -219,12 +177,8 @@ export default function ContactPage() {
                     <i className="fa fa-solid fa-envelope text-danger me-2"></i>
                     Still facing issues?
                   </h6>
-                  <p className="mb-0 text-muted small">
-                    Email us at{" "}
-                    <strong>
-                      {settings.contactEmail || "info@makhanastore.com"}
-                    </strong>{" "}
-                    — we'll respond within 24-48 hours.
+                  <p className="mb-0 text-muted small"> Email us at{" "} 
+                  <strong> {settings.contactEmail || "info@makhanastore.com"} </strong>{" "} — we'll respond within 24-48 hours.
                   </p>
                 </div>
 
@@ -260,11 +214,8 @@ export default function ContactPage() {
                     <i className="fa fa-solid fa-location-dot text-danger me-2"></i>
                     Visit Our Store
                   </h6>
-                  <Link
-                    href="/HelpUs"
-                    className="small text-decoration-none text-primary"
-                  >
-                    View address →
+                  <Link href="/HelpUs" className="small text-decoration-none text-primary"
+                  > View address →
                   </Link>
                 </div>
               </div>
@@ -275,7 +226,7 @@ export default function ContactPage() {
 
       {/* CONTACT INFO SECTION */}
       <section className="bg-gray py-4">
-        <div className="container">
+        <div className="container-fluid w-90">
           <div className="section-title text-left position-relative pb-1 mb-4 mx-auto">
             <h3 className="fw-bold">Contact Information</h3>
           </div>
@@ -288,131 +239,66 @@ export default function ContactPage() {
                   <table className="table table-bordered table-hover align-middle mb-0">
                     <tbody>
                       <tr>
-                        <th className="bg-light" style={{ width: "35%" }}>
-                          <i className="fa-solid fa-location-dot text-danger me-2"></i>
-                          Address
-                        </th>
-                        <td className="text-muted">
-                          {settings.address ||
-                            "Shop 5, Main Road, Darbhanga, Bihar - 846004"}
+                        <th className="bg-light" style={{ width: "35%" }}> 
+                         <i className="fa-solid fa-location-dot text-danger me-2"></i> Address 
+                        </th> 
+                        <td className="text-muted"> {settings.address || "Shop 5, Main Road, Darbhanga, Bihar - 846004"} </td>
+                      </tr>
+                      <tr> 
+                      <th className="bg-light"> <i className="fa-solid fa-phone text-success me-2"></i>  Phone </th>
+                       <td> <a href={`tel:${settings.contactPhone || "9876543210"}`} className="text-decoration-none text-muted"> 
+                        {settings.contactPhone || "+91 98765 43210"} </a> 
                         </td>
                       </tr>
 
-                      <tr>
-                        <th className="bg-light">
-                          <i className="fa-solid fa-phone text-success me-2"></i>
-                          Phone
-                        </th>
-                        <td>
-                          <a
-                            href={`tel:${settings.contactPhone || "9876543210"}`}
-                            className="text-decoration-none text-muted"
-                          >
-                            {settings.contactPhone || "+91 98765 43210"}
-                          </a>
-                        </td>
+                      <tr> 
+                       <th className="bg-light"><i className="fa-solid fa-envelope text-danger me-2"></i>  Email </th> 
+                       <td className="text-break"> <a href={`mailto:${settings.contactEmail || "info@makhanastore.com"}`}
+                        className="text-decoration-none"> {settings.contactEmail || "info@makhanastore.com"} </a> 
+                       </td>
                       </tr>
 
-                      <tr>
-                        <th className="bg-light">
-                          <i className="fa-solid fa-envelope text-danger me-2"></i>
-                          Email
-                        </th>
-                        <td className="text-break">
-                          <a
-                            href={`mailto:${settings.contactEmail || "info@makhanastore.com"}`}
-                            className="text-decoration-none"
-                          >
-                            {settings.contactEmail || "info@makhanastore.com"}
-                          </a>
-                        </td>
+                      <tr> 
+                       <th className="bg-light"> <i className="fa-solid fa-clock text-warning me-2"></i> Working Hours </th> 
+                        <td className="text-muted"> {settings.businessHours || "10 AM - 8 PM (Mon-Sat)"} </td>
                       </tr>
 
-                      <tr>
-                        <th className="bg-light">
-                          <i className="fa-solid fa-clock text-warning me-2"></i>
-                          Working Hours
-                        </th>
-                        <td className="text-muted">
-                          {settings.businessHours || "10 AM - 8 PM (Mon-Sat)"}
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <th className="bg-light">
-                          <i className="fa-solid fa-share-nodes text-primary me-2"></i>
-                          Follow Us
-                        </th>
+                      <tr> 
+                       <th className="bg-light"> <i className="fa-solid fa-share-nodes text-primary me-2"></i>Follow Us </th>
                         <td>
                           <div className="d-flex flex-wrap gap-2">
                             {settings.facebook && (
-                              <a
-                                className="btn btn-primary btn-square"
-                                href={settings.facebook}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="Facebook"
-                              >
+                              <a className="btn btn-primary btn-square" href={settings.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                                 <i className="fa-brands fa-facebook-f"></i>
                               </a>
                             )}
 
                             {settings.instagram && (
-                              <a
-                                className="btn btn-danger btn-square"
-                                href={settings.instagram}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="Instagram"
-                              >
+                              <a className="btn btn-danger btn-square" href={settings.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                                 <i className="fa-brands fa-instagram"></i>
                               </a>
                             )}
 
                             {settings.twitter && (
-                              <a
-                                className="btn btn-info btn-square text-white"
-                                href={settings.twitter}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="Twitter"
-                              >
+                              <a className="btn btn-info btn-square text-white" href={settings.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter">
                                 <i className="fa-brands fa-twitter"></i>
                               </a>
                             )}
 
                             {settings.youtube && (
-                              <a
-                                className="btn btn-danger btn-square"
-                                href={settings.youtube}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="YouTube"
-                              >
+                              <a className="btn btn-danger btn-square" href={settings.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube">
                                 <i className="fa-brands fa-youtube"></i>
                               </a>
                             )}
 
                             {settings.whatsappBusiness && (
-                              <a
-                                className="btn btn-success btn-square"
-                                href={settings.whatsappBusiness}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="WhatsApp"
-                              >
+                              <a className="btn btn-success btn-square" href={settings.whatsappBusiness} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
                                 <i className="fa-brands fa-whatsapp"></i>
                               </a>
                             )}
 
                             {settings.linkedin && (
-                              <a
-                                className="btn btn-primary btn-square"
-                                href={settings.linkedin}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="LinkedIn"
-                              >
+                              <a className="btn btn-primary btn-square" href={settings.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                                 <i className="fa-brands fa-linkedin-in"></i>
                               </a>
                             )}
@@ -488,7 +374,7 @@ export default function ContactPage() {
 
       {/* FAQ SECTION */}
       <section className="bg-gray pt-3 px-0">
-        <div className="container">
+        <div className="container-fluid w-90">
           <div className="section-title text-left position-relative pb-1 mb-4 mx-auto">
             <h3 className="fw-bold">Frequently Asked Questions</h3>
           </div>

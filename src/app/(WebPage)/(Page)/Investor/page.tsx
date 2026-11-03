@@ -92,7 +92,7 @@ export default function InvestorPage() {
 
   return (
     <section className="py-5 bg-gray">
-      <div className="container">
+      <div className="container-fluid w-90">
         {/* Header */}
         <div className="section-title text-left position-relative pb-1 mb-4 mx-auto">
           <h3 className="fw-bold">Investor Relations</h3>

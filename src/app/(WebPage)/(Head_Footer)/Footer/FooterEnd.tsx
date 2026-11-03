@@ -8,21 +8,21 @@ const FooterEnd = () => {
         <div className="col-lg-4 col-md-12">
           <div className="mb-0">
             <div className="section-title section-title-sm position-relative pb-2 pt-1 mb-4 d-lg-none d-md-none">
-              <h3 className="text-dark mb-0">Company Info</h3>
+              <h3 className="text-light mb-0">Company Info</h3>
             </div>
             <div className="align-items-center d-lg-flex">
-              <Link className="text-dark border-bottom" href="/">
+              <Link className="text-black fw-bold border-bottom" href="/" style={{ fontSize: "14px"}}>
                 <span>©</span> Copyright Varanasi
               </Link>
-              <div className="ms-2">All Rights Reserved</div>
+              <div className="ms-2 py-2 py-lg-0 py-md-0" style={{ fontSize: "14px"}}>All Rights Reserved</div>
             </div>
           </div>
         </div>
         <div className="col-lg-8 col-md-12">
           <div className="d-flex align-items-center justify-content-end d-sm-justify-content-start">
-            <p className="mb-0">
+            <p className="mb-0 pb-3 pb-lg-0 pb-md-0" style={{ fontSize: "14px"}}>
               Designed & Developed By:
-              <Link className="text-dark border-bottom ms-2" href="#">
+              <Link className="text-black fw-bold border-bottom ms-2 " href="#" style={{ fontSize: "14px"}}>
                 Vns Tourism, Faculty
               </Link>
             </p>
