@@ -2,7 +2,12 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Profile, getAuthUser, fetchMyProfile, LOGIN_PATH } from "../../../../../lib/authUser";
+import {
+  Profile,
+  getAuthUser,
+  fetchMyProfile,
+  LOGIN_PATH,
+} from "../../../../../lib/authUser";
 
 const FALLBACK_PIC = "/assets/images/them-1.png";
 
@@ -27,7 +32,6 @@ export default function ProfilePage() {
       window.location.href = LOGIN_PATH;
       return;
     }
-
     setData(user);
 
     const controller = new AbortController();
@@ -35,12 +39,15 @@ export default function ProfilePage() {
       .then((profile) => {
         if (!profile) return;
         setData(profile);
-        localStorage.setItem("authUser_user", JSON.stringify({ ...user, ...profile }));
+        localStorage.setItem(
+          "authUser_user",
+          JSON.stringify({ ...user, ...profile })
+        );
       })
       .catch((err) => {
-        if (err.name !== "AbortError") console.error("Profile fetch error:", err);
+        if (err.name !== "AbortError")
+          console.error("Profile fetch error:", err);
       });
-
     return () => controller.abort();
   }, []);
 
@@ -60,7 +67,9 @@ export default function ProfilePage() {
               </div>
 
               <div className="col-md-4 text-center my-auto">
-                <h6 className="fw-bold text-dark mb-2">Your Profile Picture:</h6>
+                <h6 className="fw-bold text-dark mb-2">
+                  Your Profile Picture:
+                </h6>
                 <img
                   src={data.pic ? `/assets/images/${data.pic}` : FALLBACK_PIC}
                   alt="Profile"
@@ -77,7 +86,9 @@ export default function ProfilePage() {
                 />
                 <div className="mt-3">
                   <h5 className="fw-bold mb-1">{data.name || "User"}</h5>
-                  <small className="text-muted">{data.email || "No email"}</small>
+                  <small className="text-muted">
+                    {data.email || "No email"}
+                  </small>
                 </div>
               </div>
 
@@ -87,8 +98,21 @@ export default function ProfilePage() {
                     <tbody>
                       {ROWS.map(([label, key]) => (
                         <tr key={key}>
-                          <th className="bg-light" style={{ width: "35%" }}>{label}</th>
-                          <td>{data[key] || "Not Provided"}</td>
+                          <th className="bg-light" style={{ width: "35%" }}>
+                            {label}
+                          </th>
+                         
+<td>
+  {data[key] || (
+    ["username", "email", "number"].includes(key) ? (
+      <span className="text-warning">
+        Not set — <Link href="/UpdateProfile">fill now</Link>
+      </span>
+    ) : (
+      "Not Provided"
+    )
+  )}
+</td>
                         </tr>
                       ))}
                     </tbody>
@@ -96,13 +120,22 @@ export default function ProfilePage() {
                 </div>
 
                 <div className="d-flex gap-2 flex-wrap">
-                  <Link href="/UpdateProfile" className="btn btn-primary flex-fill">
+                  <Link
+                    href="/UpdateProfile"
+                    className="btn btn-primary flex-fill"
+                  >
                     <i className="fa fa-edit me-2"></i> Update Profile
                   </Link>
-                  <Link href="/OrderSummary" className="btn btn-outline-success flex-fill">
+                  <Link
+                    href="/OrderSummary"
+                    className="btn btn-outline-success flex-fill"
+                  >
                     <i className="fa fa-list me-2"></i> My Orders
                   </Link>
-                  <Link href="/Cart" className="btn btn-outline-warning flex-fill">
+                  <Link
+                    href="/Cart"
+                    className="btn btn-outline-warning flex-fill"
+                  >
                     <i className="fa fa-shopping-cart me-2"></i> My Cart
                   </Link>
                 </div>

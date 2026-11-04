@@ -1,8 +1,13 @@
-//src>app>api>login>route.ts
+// app/api/login/route.ts
 import { NextResponse } from "next/server";
 import fs from "fs/promises";
 import path from "path";
-import { signSession, COOKIE_BY_ROLE, cookieOptions } from "../../../../lib/session";
+import {
+  signSession,
+  COOKIE_BY_ROLE,
+  cookieOptions,
+  SESSION_DURATION,
+} from "../../../../lib/session";
 
 const dataFilePath = path.join(process.cwd(), "database", "data.json");
 
@@ -10,7 +15,10 @@ export async function POST(req: Request) {
   try {
     const { username, password } = await req.json();
     if (!username || !password) {
-      return NextResponse.json({ error: "All fields required" }, { status: 400 });
+      return NextResponse.json(
+        { error: "All fields required" },
+        { status: 400 }
+      );
     }
     const json = JSON.parse(await fs.readFile(dataFilePath, "utf8"));
     const admins = json.admin || [];
@@ -19,7 +27,10 @@ export async function POST(req: Request) {
     );
 
     if (!found) {
-      return NextResponse.json({ error: "Invalid username or password" }, { status: 401 });
+      return NextResponse.json(
+        { error: "Invalid username or password" },
+        { status: 401 }
+      );
     }
 
     const res = NextResponse.json({
@@ -30,10 +41,9 @@ export async function POST(req: Request) {
       message: "Login successful",
     });
 
-    // admin ki apni alag cookie (user/report se mix nahi hogi)
     res.cookies.set(
       COOKIE_BY_ROLE.admin,
-      signSession({ id: found.id, role: "admin" }),
+      signSession({ id: found.id, role: "admin" }, SESSION_DURATION),
       cookieOptions()
     );
     return res;

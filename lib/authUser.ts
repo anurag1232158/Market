@@ -158,7 +158,10 @@
 // }
 
 // lib/authUser.ts
+
+// lib/authUser.ts
 import type { Role } from "./session";
+import { SESSION_DURATION } from "./session";
 
 export const LOGIN_PATH = "/Login";
 
@@ -209,18 +212,39 @@ export const clearAuthUser = (role: Role) => {
 export async function fetchMyProfile(
   signal?: AbortSignal
 ): Promise<Profile | null> {
-  const res = await fetch("/api/user", { cache: "no-store", signal });
+  let res: Response;
+  try {
+    res = await fetch("/api/user", { cache: "no-store", signal });
+  } catch (err) {
+    if ((err as any)?.name === "AbortError") return null;
+    console.error("fetchMyProfile: network error", err);
+    return null;
+  }
+
   if (res.status === 401) {
     clearAuthUser("user");
     if (isBrowser()) window.location.href = LOGIN_PATHS.user;
     return null;
   }
-  const profile = await res.json();
-  return profile?.id ? profile : null;
+
+  if (!res.ok) {
+    console.warn("fetchMyProfile: non-OK", res.status);
+    return null;
+  }
+
+  const text = await res.text();
+  if (!text) return null;
+
+  try {
+    const profile = JSON.parse(text) as Profile;
+    return profile?.id != null ? profile : null;
+  } catch (err) {
+    console.warn("fetchMyProfile: invalid JSON", err);
+    return null;
+  }
 }
 
-/* ⭐ SESSION — 2 HOURS (120 minutes) */
-export const SESSION_DURATION = 120 * 60 * 1000; // 7200 seconds
+export { SESSION_DURATION };
 
 export interface SessionTime {
   loginAt: number;
@@ -294,9 +318,6 @@ export const clearSessionTime = (role: Role) => {
   localStorage.removeItem(timeKey(role));
 };
 
-/* ═══════════════════════════════════════════════════════════
-   LOGOUT — सिर्फ उसी role का data हटाएगा
-   ═══════════════════════════════════════════════════════════ */
 export async function logout(role: Role = "user") {
   setLogoutTime(role);
 
@@ -306,28 +327,19 @@ export async function logout(role: Role = "user") {
     body: JSON.stringify({ role }),
   }).catch(() => {});
 
-  /* ✅ सिर्फ इस role का data हटाओ — बाकी roles logged-in रहेंगे */
   clearAuthUser(role);
   clearSessionTime(role);
 
   if (isBrowser()) {
-    /* legacy "authUser" key (अगर पुराना code use करता हो) */
     localStorage.removeItem("authUser");
-
-    /* ✅ उसी role के login page पर भेजो */
     window.location.href = LOGIN_PATHS[role];
   }
 }
 
-/* ═══════════════════════════════════════════════════════════
-   LOGOUT ALL — सभी roles को एक साथ logout (optional)
-   ═══════════════════════════════════════════════════════════ */
 export async function logoutAll() {
   const roles: Role[] = ["user", "admin", "report"];
 
-  for (const role of roles) {
-    setLogoutTime(role);
-  }
+  for (const role of roles) setLogoutTime(role);
 
   await fetch("/api/logout", {
     method: "POST",

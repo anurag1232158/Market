@@ -5,9 +5,10 @@ import "../../public/assets/css/bootstrap.min.css";
 import "../../public/assets/css/style.css";
 import "../../public/assets/css/font_awesome.css";
 import "../../public/assets/css/leaflet.css";
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
-import DynamicScripts from "./(WebPage)/Dynamic/DynamicScripts/DynamicScripts"; // ✅ Use DynamicScripts
-import AuthWrapper from "./(WebPage)/Dynamic/AuthWrapper/AuthWrapper"; // ✅ Use AuthWrapper
+import DynamicScripts from "./(WebPage)/Dynamic/DynamicScripts/DynamicScripts";
+import AuthWrapper from "./(WebPage)/Dynamic/AuthWrapper/AuthWrapper";
 import { ThemeProvider } from "./ThemeProvider/ThemeProvider";
 
 export const metadata: Metadata = {
@@ -20,6 +21,7 @@ export default function RootLayout({ children, }: { children: React.ReactNode; }
   return (
     <html lang="en" suppressHydrationWarning data-theme="light">
       <body style={{ overflowX: "hidden", top: 0 }}>
+        <GoogleOAuthProvider clientId="281510348955-hrfjcmku8hjdpug9u6m905sb52om0ko1.apps.googleusercontent.com">
         <ThemeProvider>
           {/* {style.css & animation.css */}
           <AuthWrapper>{children}</AuthWrapper>
@@ -27,6 +29,7 @@ export default function RootLayout({ children, }: { children: React.ReactNode; }
           <DynamicScripts />
 
         </ThemeProvider>
+        </GoogleOAuthProvider>
       </body>
     </html>
   );

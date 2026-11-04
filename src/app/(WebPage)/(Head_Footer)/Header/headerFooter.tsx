@@ -167,7 +167,6 @@ const HeaderFooter = () => {
               <Link href="/Contact" className="nav-item nav-link" onClick={closeNavbar}> Contact </Link>
             </div>
 
-            {/* Location Search */}
             <div className="w-100 p-1 text-center float-end">
                 <div className="input-group w-100">
                   <input type="text" id="mapSearchInput" placeholder="Search NCR location..." required value={locationSearch} className="form-control"
@@ -182,7 +181,7 @@ const HeaderFooter = () => {
                       }
                     }}
                   />
-                  <button id="mapSearchBtn" className="btn btn-primary" type="button"
+                  <button id="mapSearchBtn" className="btn btn-primary border-0" type="button"
                     onClick={() => {
                       if (locationSearch.trim()) {
                         router.push(

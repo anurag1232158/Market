@@ -8,14 +8,18 @@ export const COOKIE_BY_ROLE: Record<Role, string> = {
   admin: "adminSession",
   report: "reportSession",
 };
-export const SESSION_COOKIE = COOKIE_BY_ROLE.user; // purane imports na tootein
+export const SESSION_COOKIE = COOKIE_BY_ROLE.user; // legacy import alias
 
-export const cookieOptions = (maxAge = 60 * 30) => ({
+/* ⭐ Single source of truth — 2 hours */
+export const SESSION_DURATION = 120 * 60 * 1000; // 7,200,000 ms
+export const SESSION_SECONDS = SESSION_DURATION / 1000; // 7,200 s
+
+export const cookieOptions = (maxAgeSeconds = SESSION_SECONDS) => ({
   httpOnly: true,
   secure: process.env.NODE_ENV === "production",
   sameSite: "lax" as const,
   path: "/",
-  maxAge,
+  maxAge: maxAgeSeconds,
 });
 
 const secret = () => {
@@ -27,7 +31,7 @@ const secret = () => {
 const hmac = (body: string) =>
   crypto.createHmac("sha256", secret()).update(body).digest("base64url");
 
-export function signSession(payload: object, ttlMs = 30 * 60 * 1000) {
+export function signSession(payload: object, ttlMs = SESSION_DURATION) {
   const body = Buffer.from(
     JSON.stringify({ ...payload, exp: Date.now() + ttlMs })
   ).toString("base64url");
